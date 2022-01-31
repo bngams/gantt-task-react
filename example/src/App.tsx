@@ -9,6 +9,8 @@ const App = () => {
   const [view, setView] = React.useState<ViewMode>(ViewMode.Day);
   const [tasks, setTasks] = React.useState<Task[]>(initTasks());
   const [isChecked, setIsChecked] = React.useState(true);
+  const [isCheckedDates, setIsCheckedDates] = React.useState(true);
+  const [isCheckedStatus, setIsCheckedStatus] = React.useState(true);
   let columnWidth = 60;
   if (view === ViewMode.Month) {
     columnWidth = 300;
@@ -66,12 +68,25 @@ const App = () => {
       <ViewSwitcher
         onViewModeChange={viewMode => setView(viewMode)}
         onViewListChange={setIsChecked}
+        onViewDateChange={setIsCheckedDates}
+        onViewStatusChange={setIsCheckedStatus}
         isChecked={isChecked}
+        isCheckedDates={isCheckedDates}
+        isCheckedStatus={isCheckedStatus}
       />
       <h3>Gantt With Unlimited Height</h3>
       <Gantt
         tasks={tasks}
         viewMode={view}
+        locale="fr-FR"
+        dateTimeOptions={{
+          weekday: undefined,
+          year: "numeric",
+          month: "numeric",
+          day: "numeric",
+        }}
+        showTaskStatus={!!isCheckedStatus}
+        showTaskListDates={!!isCheckedDates}
         onDateChange={handleTaskChange}
         onDelete={handleTaskDelete}
         onProgressChange={handleProgressChange}
@@ -85,6 +100,8 @@ const App = () => {
       <Gantt
         tasks={tasks}
         viewMode={view}
+        showTaskStatus={!!isCheckedStatus}
+        showTaskListDates={!!isCheckedDates}
         onDateChange={handleTaskChange}
         onDelete={handleTaskDelete}
         onProgressChange={handleProgressChange}

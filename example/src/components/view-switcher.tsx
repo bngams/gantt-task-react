@@ -3,13 +3,21 @@ import "gantt-task-react/dist/index.css";
 import { ViewMode } from "gantt-task-react";
 type ViewSwitcherProps = {
   isChecked: boolean;
-  onViewListChange: (isChecked: boolean) => void;
+  isCheckedDates: boolean;
+  isCheckedStatus: boolean;
   onViewModeChange: (viewMode: ViewMode) => void;
+  onViewListChange: (isChecked: boolean) => void;
+  onViewDateChange: (isCheckedDates: boolean) => void;
+  onViewStatusChange: (isCheckedStatus: boolean) => void;
 };
 export const ViewSwitcher: React.SFC<ViewSwitcherProps> = ({
   onViewModeChange,
   onViewListChange,
+  onViewDateChange,
+  onViewStatusChange,
   isChecked,
+  isCheckedDates,
+  isCheckedStatus,
 }) => {
   return (
     <div className="ViewContainer">
@@ -51,6 +59,30 @@ export const ViewSwitcher: React.SFC<ViewSwitcherProps> = ({
           <span className="Slider" />
         </label>
         Show Task List
+      </div>
+
+      <div className="Switch">
+        <label className="Switch_Toggle">
+          <input
+            type="checkbox"
+            defaultChecked={isCheckedDates}
+            onClick={() => onViewDateChange(!isCheckedDates)}
+          />
+          <span className="Slider" />
+        </label>
+        Show dates on Task List
+      </div>
+
+      <div className="Switch">
+        <label className="Switch_Toggle">
+          <input
+            type="checkbox"
+            defaultChecked={isCheckedStatus}
+            onClick={() => onViewStatusChange(!isCheckedStatus)}
+          />
+          <span className="Slider" />
+        </label>
+        Show status on Task List
       </div>
     </div>
   );

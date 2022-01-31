@@ -10,8 +10,12 @@ export function initTasks() {
       id: "ProjectSample",
       progress: 25,
       type: "project",
-
+      status: "En cours",
       hideChildren: false,
+      resources: [{ id: "1", name: "Boris " }],
+      styles: {
+        backgroundColor: "#7CC142",
+      },
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),

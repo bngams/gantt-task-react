@@ -7,10 +7,19 @@ export enum ViewMode {
   Month = "Month",
 }
 export type TaskType = "task" | "milestone" | "project";
+
+export type Resources = Resource[];
+
+export interface Resource {
+  id: string;
+  name: string;
+}
+
 export interface Task {
   id: string;
   type: TaskType;
   name: string;
+  status?: string;
   start: Date;
   end: Date;
   /**
@@ -25,6 +34,7 @@ export interface Task {
   };
   isDisabled?: boolean;
   project?: string;
+  resources?: Resources;
   dependencies?: string[];
   hideChildren?: boolean;
 }
@@ -72,6 +82,12 @@ export interface DisplayOption {
    * Specifies the month name language. Able formats: ISO 639-2, Java Locale
    */
   locale?: string;
+  /**
+   * Specifies date locale specific options for Date.prototype.toLocaleDateString()
+   */
+  dateTimeOptions?: Intl.DateTimeFormatOptions;
+  showTaskListDates?: boolean;
+  showTaskStatus?: boolean;
   rtl?: boolean;
 }
 
@@ -113,6 +129,7 @@ export interface StylingOption {
     rowWidth: string;
     fontFamily: string;
     fontSize: string;
+    showTaskListDates: boolean;
   }>;
   TaskListTable?: React.FC<{
     rowHeight: number;
@@ -120,6 +137,8 @@ export interface StylingOption {
     fontFamily: string;
     fontSize: string;
     locale: string;
+    showTaskListDates: boolean;
+    dateTimeOptions: Intl.DateTimeFormatOptions;
     tasks: Task[];
     selectedTaskId: string;
     /**

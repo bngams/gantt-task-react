@@ -11,6 +11,9 @@ export type TaskListProps = {
   ganttHeight: number;
   scrollY: number;
   locale: string;
+  showTaskStatus: boolean;
+  showTaskListDates: boolean;
+  dateTimeOptions: Intl.DateTimeFormatOptions;
   tasks: Task[];
   taskListRef: React.RefObject<HTMLDivElement>;
   horizontalContainerClass?: string;
@@ -22,6 +25,8 @@ export type TaskListProps = {
     rowWidth: string;
     fontFamily: string;
     fontSize: string;
+    showTaskStatus: boolean;
+    showTaskListDates: boolean;
   }>;
   TaskListTable: React.FC<{
     rowHeight: number;
@@ -29,6 +34,9 @@ export type TaskListProps = {
     fontFamily: string;
     fontSize: string;
     locale: string;
+    showTaskStatus: boolean;
+    showTaskListDates: boolean;
+    dateTimeOptions: Intl.DateTimeFormatOptions;
     tasks: Task[];
     selectedTaskId: string;
     setSelectedTask: (taskId: string) => void;
@@ -48,6 +56,9 @@ export const TaskList: React.FC<TaskListProps> = ({
   setSelectedTask,
   onExpanderClick,
   locale,
+  showTaskStatus,
+  showTaskListDates,
+  dateTimeOptions,
   ganttHeight,
   taskListRef,
   horizontalContainerClass,
@@ -66,6 +77,8 @@ export const TaskList: React.FC<TaskListProps> = ({
     fontFamily,
     fontSize,
     rowWidth,
+    showTaskStatus,
+    showTaskListDates,
   };
   const selectedTaskId = selectedTask ? selectedTask.id : "";
   const tableProps = {
@@ -75,6 +88,9 @@ export const TaskList: React.FC<TaskListProps> = ({
     fontSize,
     tasks,
     locale,
+    showTaskStatus,
+    showTaskListDates,
+    dateTimeOptions,
     selectedTaskId: selectedTaskId,
     setSelectedTask,
     onExpanderClick,
