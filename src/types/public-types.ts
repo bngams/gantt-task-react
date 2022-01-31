@@ -43,6 +43,7 @@ export interface Task {
   type: TaskType;
   name: string;
   status?: string;
+  duration?: number;
   start: Date;
   end: Date;
   /**
@@ -112,6 +113,8 @@ export interface DisplayOption {
   dateTimeOptions?: Intl.DateTimeFormatOptions;
   showTaskListDates?: boolean;
   showTaskStatus?: boolean;
+  showResources?: boolean;
+  showDuration?: boolean;
   rtl?: boolean;
 }
 

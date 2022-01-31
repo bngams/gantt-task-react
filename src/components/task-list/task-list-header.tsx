@@ -6,6 +6,8 @@ export const TaskListHeaderDefault: React.FC<{
   rowWidth: string;
   fontFamily: string;
   fontSize: string;
+  showResources: boolean;
+  showDuration: boolean;
   showTaskStatus: boolean;
   showTaskListDates: boolean;
 }> = ({
@@ -13,6 +15,8 @@ export const TaskListHeaderDefault: React.FC<{
   fontFamily,
   fontSize,
   rowWidth,
+  showResources,
+  showDuration,
   showTaskStatus,
   showTaskListDates,
 }) => {
@@ -45,6 +49,44 @@ export const TaskListHeaderDefault: React.FC<{
             marginTop: headerHeight * 0.2,
           }}
         />
+        {showResources && (
+          <div
+            className={styles.ganttTable_HeaderItem}
+            style={{
+              minWidth: rowWidth,
+            }}
+          >
+            &nbsp;Resources
+          </div>
+        )}
+        {showResources && (
+          <div
+            className={styles.ganttTable_HeaderSeparator}
+            style={{
+              height: headerHeight * 0.5,
+              marginTop: headerHeight * 0.2,
+            }}
+          />
+        )}
+        {showDuration && (
+          <div
+            className={styles.ganttTable_HeaderItem}
+            style={{
+              minWidth: rowWidth,
+            }}
+          >
+            &nbsp;Duration
+          </div>
+        )}
+        {showDuration && (
+          <div
+            className={styles.ganttTable_HeaderSeparator}
+            style={{
+              height: headerHeight * 0.5,
+              marginTop: headerHeight * 0.2,
+            }}
+          />
+        )}
         {showTaskListDates && (
           <div
             className={styles.ganttTable_HeaderItem}
@@ -75,23 +117,6 @@ export const TaskListHeaderDefault: React.FC<{
           </div>
         )}
         {showTaskListDates && (
-          <div
-            className={styles.ganttTable_HeaderSeparator}
-            style={{
-              height: headerHeight * 0.5,
-              marginTop: headerHeight * 0.25,
-            }}
-          />
-        )}
-        <div
-          className={styles.ganttTable_HeaderItem}
-          style={{
-            minWidth: rowWidth,
-          }}
-        >
-          &nbsp;Resources
-        </div>
-        {showTaskStatus && (
           <div
             className={styles.ganttTable_HeaderSeparator}
             style={{

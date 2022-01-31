@@ -25,6 +25,8 @@ export const TaskListTableDefault: React.FC<{
   dateTimeOptions: Intl.DateTimeFormatOptions;
   showTaskListDates: boolean;
   showTaskStatus: boolean;
+  showResources: boolean;
+  showDuration: boolean;
   tasks: Task[];
   selectedTaskId: string;
   setSelectedTask: (taskId: string) => void;
@@ -39,6 +41,8 @@ export const TaskListTableDefault: React.FC<{
   dateTimeOptions,
   showTaskListDates,
   showTaskStatus,
+  showResources,
+  showDuration,
   onExpanderClick,
 }) => {
   const toLocaleDateString = useMemo(
@@ -112,6 +116,32 @@ export const TaskListTableDefault: React.FC<{
                   })}
               </div>
             </div>
+            {showResources && (
+              <div
+                className={styles.taskListCell}
+                style={{
+                  minWidth: rowWidth,
+                  maxWidth: rowWidth,
+                }}
+              >
+                {t.resources ? (
+                  <TaskResourcesList resources={t.resources} />
+                ) : (
+                  ""
+                )}
+              </div>
+            )}
+            {showDuration && (
+              <div
+                className={styles.taskListCell}
+                style={{
+                  minWidth: rowWidth,
+                  maxWidth: rowWidth,
+                }}
+              >
+                {t.duration || ""}
+              </div>
+            )}
             {showTaskListDates && (
               <div
                 className={styles.taskListCell}
@@ -134,15 +164,6 @@ export const TaskListTableDefault: React.FC<{
                 &nbsp;{toLocaleDateString(t.end, dateTimeOptions)}
               </div>
             )}
-            <div
-              className={styles.taskListCell}
-              style={{
-                minWidth: rowWidth,
-                maxWidth: rowWidth,
-              }}
-            >
-              {t.resources ? <TaskResourcesList resources={t.resources} /> : ""}
-            </div>
             {showTaskStatus && (
               <div
                 className={styles.taskListCell}

@@ -11,6 +11,8 @@ export type TaskListProps = {
   ganttHeight: number;
   scrollY: number;
   locale: string;
+  showResources: boolean;
+  showDuration: boolean;
   showTaskStatus: boolean;
   showTaskListDates: boolean;
   dateTimeOptions: Intl.DateTimeFormatOptions;
@@ -27,6 +29,8 @@ export type TaskListProps = {
     fontSize: string;
     showTaskStatus: boolean;
     showTaskListDates: boolean;
+    showResources: boolean;
+    showDuration: boolean;
   }>;
   TaskListTable: React.FC<{
     rowHeight: number;
@@ -34,6 +38,8 @@ export type TaskListProps = {
     fontFamily: string;
     fontSize: string;
     locale: string;
+    showResources: boolean;
+    showDuration: boolean;
     showTaskStatus: boolean;
     showTaskListDates: boolean;
     dateTimeOptions: Intl.DateTimeFormatOptions;
@@ -56,6 +62,8 @@ export const TaskList: React.FC<TaskListProps> = ({
   setSelectedTask,
   onExpanderClick,
   locale,
+  showResources,
+  showDuration,
   showTaskStatus,
   showTaskListDates,
   dateTimeOptions,
@@ -77,6 +85,8 @@ export const TaskList: React.FC<TaskListProps> = ({
     fontFamily,
     fontSize,
     rowWidth,
+    showResources,
+    showDuration,
     showTaskStatus,
     showTaskListDates,
   };
@@ -88,6 +98,8 @@ export const TaskList: React.FC<TaskListProps> = ({
     fontSize,
     tasks,
     locale,
+    showResources,
+    showDuration,
     showTaskStatus,
     showTaskListDates,
     dateTimeOptions,

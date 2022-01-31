@@ -27,6 +27,8 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   ganttHeight = 0,
   viewMode = ViewMode.Day,
   locale = "en-GB",
+  showResources = false,
+  showDuration = false,
   showTaskStatus = false,
   showTaskListDates = false,
   dateTimeOptions = {
@@ -394,6 +396,8 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     fontSize,
     tasks: barTasks,
     locale,
+    showResources,
+    showDuration,
     showTaskStatus,
     showTaskListDates,
     dateTimeOptions,
