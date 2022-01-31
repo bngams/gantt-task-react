@@ -12,10 +12,33 @@ export function initTasks() {
       type: "project",
       status: "En cours",
       hideChildren: false,
-      resources: [{ id: "1", name: "Boris " }],
+      resources: [
+        {
+          id: "1",
+          name: "Boris",
+          imgPath:
+            "https://storage.freshprocess.eu/view/866c629af1314f27a6854187952da6b4.jpg?t=1643653037850",
+          styles: {
+            width: 25,
+            height: 25,
+            border: "",
+            backgroundColor: "",
+            color: "",
+          },
+        },
+      ],
       styles: {
         backgroundColor: "#7CC142",
       },
+      alerts: [
+        {
+          id: "",
+          type: "late",
+          iconPath: "https://freshcore.freshprocess.eu/assets/images/late.png",
+          iconTitle: "Projet en retard",
+          iconStyles: { width: 15, height: 15 },
+        },
+      ],
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),

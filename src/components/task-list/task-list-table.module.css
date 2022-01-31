@@ -36,3 +36,16 @@
   padding-left: 1rem;
   user-select: none;
 }
+
+.taksAlert {
+  display: inline;
+  margin-left: 5px;
+}
+
+.projectTaskLabel {
+  font-weight: bold;
+}
+
+.simpleTaskLabel {
+  margin-left: 15px;
+}

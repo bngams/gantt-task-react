@@ -13,6 +13,29 @@ export type Resources = Resource[];
 export interface Resource {
   id: string;
   name: string;
+  imgPath?: string;
+  styles?: {
+    width?: number;
+    height?: number;
+    border?: string;
+    backgroundColor?: string;
+    color?: string;
+  };
+}
+
+export type Alerts = Alert[];
+
+export type AlertType = "locked" | "late";
+
+export interface Alert {
+  id: string;
+  type: AlertType;
+  iconPath: string;
+  iconTitle: string;
+  iconStyles?: {
+    width?: number;
+    height?: number;
+  };
 }
 
 export interface Task {
@@ -37,6 +60,7 @@ export interface Task {
   resources?: Resources;
   dependencies?: string[];
   hideChildren?: boolean;
+  alerts?: Alerts;
 }
 
 export interface EventOption {

@@ -76,6 +76,8 @@ const App = () => {
       />
       <h3>Gantt With Unlimited Height</h3>
       <Gantt
+        todayColor="red"
+        rowHeight={40}
         tasks={tasks}
         viewMode={view}
         locale="fr-FR"

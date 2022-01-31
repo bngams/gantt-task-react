@@ -87,7 +87,29 @@ export const TaskListTableDefault: React.FC<{
                 >
                   {expanderSymbol}
                 </div>
-                <div>{t.name}</div>
+                <div>
+                  {!t.project && (
+                    <span className={styles.projectTaskLabel}>{t.name}</span>
+                  )}
+                  {t.project && (
+                    <span className={styles.simpleTaskLabel}>{t.name}</span>
+                  )}
+                </div>
+                {t.alerts &&
+                  t.alerts.map((alert, i) => {
+                    return (
+                      <img
+                        className={styles.taksAlert}
+                        style={{
+                          width: alert.iconStyles?.width + "px" || "auto",
+                          height: alert.iconStyles?.height + "px" || "auto",
+                        }}
+                        key={i}
+                        src={alert.iconPath}
+                        title={alert.iconTitle}
+                      />
+                    );
+                  })}
               </div>
             </div>
             {showTaskListDates && (
